@@ -1,6 +1,6 @@
 ## UML 
 
-![image](./lap26.png)
+![image](./lap27.png)
 
 # Getting Started with Create React App
 
