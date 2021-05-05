@@ -1,4 +1,4 @@
-import "./style/fotter.scss";
+import "./fotter.scss";
 import React from "react";
 
 class Footer extends React.Component {
