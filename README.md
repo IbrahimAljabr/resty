@@ -1,6 +1,7 @@
 ## UML 
 
-# [Netlify site here :](https://resty-404.netlify.app/)
+## [Netlify site here :](https://resty-404.netlify.app/)
+
 
  ![image](./lab27.png)
 
