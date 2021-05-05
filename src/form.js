@@ -12,24 +12,25 @@ import React from "react";
 //     };
 //   }
 const Form = (props) => {
-  console.log("whattt", props.handleResult);
-
   async function handleClick(e) {
     e.preventDefault();
     const url = document.getElementById("words-input").value;
-    console.log(url);
     try {
       const raw = await fetch(url);
       const data = await raw.json();
+
       const results = data.results.reduce((acc, person) => {
         acc.push({ name: person.name, url: person.url });
         return acc;
       }, []);
-      //   props.handleResult(results);
-      //   console.log(results);
+
       props.handleResult({ results: results });
+      console.log(results, "sss");
     } catch (error) {
       console.error(error);
+      props.handleResult({
+        results: ["The URL you have entered is invalid"],
+      });
     }
   }
 
@@ -38,7 +39,6 @@ const Form = (props) => {
     active.removeAttribute("class");
     e.target.setAttribute("class", "active");
     const btnText = document.getElementsByClassName("active");
-    // this.setState({ method: btnText[0].textContent });
     return btnText[0].textContent;
   }
 
