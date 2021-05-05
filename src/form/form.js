@@ -1,31 +1,26 @@
-import "./style/app.scss";
+import "./app.scss";
 import React from "react";
 
-// class Main extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
 //       words: "https://swapi.dev/api/people/",
-//       method: "",
-//       results: "",
-//     };
-//   }
+let requestOptions = {
+  method: "GET",
+};
 const Form = (props) => {
   async function handleClick(e) {
     e.preventDefault();
-    const url = document.getElementById("words-input").value;
     try {
-      const raw = await fetch(url);
+      const url = document.getElementById("words-input").value;
+      const raw = await fetch(url, requestOptions);
       const data = await raw.json();
-
       const results = data.results.reduce((acc, person) => {
         acc.push({ name: person.name, url: person.url });
         return acc;
       }, []);
-
-      props.handleResult({ results: results });
-      console.log(results, "sss");
+      let history = [requestOptions.method, url];
+      props.handleResult({
+        results: results,
+        urlResult: history,
+      });
     } catch (error) {
       console.error(error);
       props.handleResult({
@@ -39,11 +34,13 @@ const Form = (props) => {
     active.removeAttribute("class");
     e.target.setAttribute("class", "active");
     const btnText = document.getElementsByClassName("active");
+    // console.log(btnText[0].textContent);
+    requestOptions.method = btnText[0].textContent;
     return btnText[0].textContent;
   }
 
   return (
-    <>
+    <div>
       <button onClick={handleIsActive} className="active">
         GET
       </button>
@@ -60,7 +57,7 @@ const Form = (props) => {
         <input id="words-input" type="text" />
         <button>Go</button>
       </form>
-    </>
+    </div>
   );
 };
 export default Form;
