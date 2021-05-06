@@ -1,28 +1,31 @@
 import React from "react";
 import "./history.scss";
 
-let arr = [];
 const Results = (props) => {
-  console.log("arrrrrrrrrrrr", arr);
-  if (props.data.urlResult) {
-    console.log("firsttt", arr);
-    if (arr.includes(props.data.urlResult) === true || arr.length === 0) {
-      console.log("history", props.data.urlResult);
-      arr.push(props.data.urlResult);
-    }
+  console.log(props.data, "PPPPPPPPPPPPPPP");
+  if (props.results) {
   }
-  //onClick={UrlValue}
   return (
-    <div className="history">
-      {arr.map((data, index) => {
+    <>
+      <h1>History</h1>
+      {/* <div className="history">
+        <div className="left">
+          <h2>{data[0]}</h2>
+          {data[1]}
+        </div>
+      </div> */}
+
+      {/* {arr.map((data, index) => {
         return (
-          <div key={index}>
-            {data[0] + " "}
-            {data[1]}
+          <div className="history">
+            <div className="left" key={index}>
+              <h2>{data[0]}</h2>
+              {data[1]}
+            </div>
           </div>
         );
-      })}
-    </div>
+      })} */}
+    </>
   );
 };
 export default Results;

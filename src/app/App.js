@@ -1,21 +1,33 @@
 import { Component } from "react";
+import Header from "../header/header";
 import React from "react";
 import Footer from "../footer/footer";
-import Header from "../header/header";
 import Form from "../form/form";
 import Result from "../result/result";
-import History from "../history/history";
+// import History from "../history/history";
+// import AboutUs from "../aboutus/aboutus";
+// import Home from "../home/home";
+// import { Route, Switch } from "react-router-dom";
+
+// import { If, Then, Else } from "react-if";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       results: [],
+      loading: false,
+      method: "GET",
     };
   }
   handleResult = (response) => {
-    console.log(response);
     this.setState({ results: response });
+  };
+  toggleLoading = () => {
+    this.setState({ loading: !this.state.loading });
+  };
+  method = (response) => {
+    this.setState({ method: response });
   };
 
   render() {
@@ -23,13 +35,21 @@ export default class App extends Component {
       <>
         <Header />
         <main>
-          <Form handleResult={this.handleResult} />
+          {/* <Home /> */}
+          {/* <Switch>
+            <Route exact path="/" component={Form} />
+            <Route path="/history" component={History}></Route>
+            <Route path="/aboutus" component={AboutUs} />
+          </Switch> */}
+          <Form
+            handleResult={this.handleResult}
+            loading={this.toggleLoading}
+            method={this.method}
+          />
           <section>
+            <div>{/* <History data={this.state} /> */}</div>
             <div>
-              <History data={this.state.results} />
-            </div>
-            <div>
-              <Result data={this.state.results} />
+              <Result data={this.state} />
             </div>
           </section>
         </main>
