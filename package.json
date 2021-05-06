@@ -11,8 +11,10 @@
     "react-dom": "^17.0.2",
     "react-if": "^4.0.1",
     "react-json-view": "^1.21.3",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "rjv": "^5.0.0-alpha.9",
+    "superagent": "^6.1.0",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
