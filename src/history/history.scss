@@ -5,12 +5,32 @@
 h2 {
   font-size: 15px;
   display: inline;
-  margin-right: 10px;
-  background-color: rgb(101, 105, 109);
+  margin-right: 8px;
   padding: 5px;
   border-radius: 4px;
-  color: #eeeeee;
+  cursor: not-allowed !important;
 }
 .left {
+  // margin-bottom: 20px;
+  cursor: pointer;
+  padding: 12px 0;
+}
+h1 {
   margin-bottom: 20px;
+}
+.post {
+  background-color: rgb(18, 116, 221);
+  color: #ffffff;
+}
+.get {
+  background-color: rgb(40, 42, 44);
+  color: #ececec;
+}
+.put {
+  background-color: rgb(58, 182, 47);
+  color: #ffffff;
+}
+.delete {
+  background-color: rgb(253, 55, 55);
+  color: #f0f0f0;
 }
