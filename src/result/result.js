@@ -1,9 +1,9 @@
 import ReactJson from "react-json-view";
 import React from "react";
 import logo from "./gif.gif";
+import "./result.scss";
 
 const Results = (props) => {
-  // console.log(props.data, "loding");
   if (props.data.loading) {
     return (
       <div>
@@ -12,11 +12,19 @@ const Results = (props) => {
     );
   }
   if (props.data.results.results) {
-    return (
-      <div className="div-api">
-        <ReactJson name={false} src={props.data} theme="rjv-default" />
-      </div>
-    );
+    if (
+      props.data.results.results[0] === "The URL you have entered is invalid"
+    ) {
+      return (
+        <div className="errorMessage">The URL you have entered is invalid</div>
+      );
+    } else if (props.data.results.results) {
+      return (
+        <div className="div-api">
+          <ReactJson name={false} src={props.data} theme="rjv-default" />
+        </div>
+      );
+    } else return null;
   } else return null;
 };
 export default Results;

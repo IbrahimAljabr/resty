@@ -3,13 +3,13 @@ import React from "react";
 import { If, Then } from "react-if";
 
 //       words: "https://swapi.dev/api/people/",
-let requestOptions = {
-  method: "GET",
-  headers: { "Content-Type": "application/json" },
-  body: null,
-};
 
 const Form = (props) => {
+  let requestOptions = {
+    method: props.data.method || "GET",
+    headers: { "Content-Type": "application/json" },
+    body: null,
+  };
   async function handleClick(e) {
     e.preventDefault();
     props.loading();
@@ -46,30 +46,31 @@ const Form = (props) => {
     }
     props.loading();
   }
-  function handleIsActive(e) {
+
+  const handleIsActive = (e) => {
     const active = document.getElementsByClassName("active")[0];
-    active.removeAttribute("class");
+    if (active) {
+      active.removeAttribute("class");
+    }
     e.target.setAttribute("class", "active");
     const btnText = document.getElementsByClassName("active");
-
-    requestOptions.method = btnText[0].textContent;
-    props.method({ method: btnText[0].textContent });
-
+    props.method(btnText[0].textContent);
+    requestOptions.method = props.data.method;
     return btnText[0].textContent;
-  }
+  };
 
   return (
     <div>
-      <button onClick={handleIsActive} className="active">
+      <button id="GET" onClick={handleIsActive}>
         GET
       </button>
-      <button onClick={handleIsActive} className="">
+      <button id="POST" onClick={handleIsActive}>
         POST
       </button>
-      <button onClick={handleIsActive} className="">
+      <button id="PUT" onClick={handleIsActive}>
         PUT
       </button>
-      <button onClick={handleIsActive} className="">
+      <button id="DELETE" onClick={handleIsActive}>
         DELETE
       </button>
       <form onSubmit={handleClick}>
@@ -88,4 +89,5 @@ const Form = (props) => {
     </div>
   );
 };
-export default Form;
+
+export { Form };
