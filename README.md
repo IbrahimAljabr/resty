@@ -3,7 +3,7 @@
 ## [Netlify site here :](https://resty-404.netlify.app/)
 
 
- ![image](./lab29.png)
+ ![image](./img/lab29.png)
 
 
 # Getting Started with Create React App
